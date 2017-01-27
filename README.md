@@ -1,42 +1,29 @@
-# jurager/morphy
+# jurager/sender
 
-Laravel wrapper for phpMorphy library with PHP7 support
+Sender - Laravel Provider for SMS-assistent.by
 
-This library allow retireve follow morph information for any word:
-- Base (normal) form
-- All forms
-- Grammatical (part of speech, grammems) information
 
 ## Install
 
 Via Composer
 ``` bash
-$ composer require jurager/morphy
+$ composer require jurager/sender
 ```
 
-## Usage
-``` php
-$morphy = new jurager\morphy\Morphy('en');
-echo $morphy->getPseudoRoot('FIGHTY');
-```
 ## Laravel support
 
 Add to config/app.php:
 
 Section ```providers```
 ``` php
-jurager\morphy\MorphyServiceProvider::class,
+jurager\sender\SenderServiceProvider::class,
 ```
 
 Section ```aliases```
 ``` php
-'Morphy'    => jurager\morphy\Facade\Morphy::class,
+'Sender'    => jurager\sender\Sender::class,
 ```
 
-### Facade
-``` php
-Morphy::getPseudoRoot('БОЙЦОВЫЙ')
-```
 
 ## Change log
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
