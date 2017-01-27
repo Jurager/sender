@@ -8,14 +8,6 @@ class Sender
 {
 
     /**
-     * Laravel application
-     *
-     * @var \Illuminate\Foundation\Application
-     */
-    public $app;
-
-
-    /**
      * Settings
      *
      */
@@ -59,10 +51,8 @@ class Sender
      *
      * @return void
      */
-    public function __construct($app)
+    public function __construct()
     {
-        $this->app      = $app;
-
         $this->agent    = Config::get('sender.agent');
         $this->username = Config::get('sender.username');
         $this->password = Config::get('sender.password');
