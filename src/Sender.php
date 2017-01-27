@@ -60,7 +60,7 @@ class Sender
     }
 
 
-    private static function send ($url, $data = false) {
+    private function send ($url, $data = false) {
 
         $ch = curl_init( $url );
 
@@ -160,7 +160,7 @@ class Sender
             'password'  => $this->password,
             'recipient' => $phone,
             'message'   => $message,
-            'sender'    => $this->sender,
+            'sender'    => $this->name,
         ];
 
         // Endpoint
