@@ -117,7 +117,7 @@ class Sender
      * @param $message
      * @return array
      */
-    public static function sendBulk($phones, $message){
+    public function sendBulk($phones, $message){
 
         $response = [];
 
@@ -161,7 +161,7 @@ class Sender
      * @param $message
      * @return array
      */
-    public static function sendOne($phone, $message){
+    public function sendOne($phone, $message){
 
         $response = [];
 
@@ -197,7 +197,7 @@ class Sender
      * @param $ids
      * @return array
      */
-    public static function getStatus($ids) {
+    public function getStatus($ids) {
 
         $response = [];
 
