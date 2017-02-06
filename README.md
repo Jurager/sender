@@ -16,12 +16,58 @@ Add to config/app.php:
 
 Section ```providers```
 ``` php
-jurager\sender\SenderServiceProvider::class,
+Jurager\Sender\SenderServiceProvider::class,
 ```
 
 Section ```aliases```
 ``` php
-'Sender'    => jurager\sender\Sender::class,
+'Sender'    => Jurager\Sender\Sender::class,
+```
+Now, if you have configured ```Queues```, you can create a ```Job``` like this below in ```/App/Http/Jobs```
+```
+<?php
+
+namespace App\Jobs;
+
+use Jurager\Sender\Sender;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SMS extends Job implements ShouldQueue
+{
+    use InteractsWithQueue, SerializesModels;
+
+    protected $to;
+    protected $text;
+
+    /**
+     * @param $to
+     * @param $text
+     */
+    public function __construct($to, $text)
+    {
+        $this->to   = $to;
+        $this->text = $text;
+    }
+
+    public function handle(Sender $sender)
+    {
+        $sender->sendOne($this->to, $this->text);
+    }
+}
+```
+
+And after dispatch a new Job anywhere in your app
+```
+<?php
+
+use App\Jobs\SMS;
+
+class SampleController
+{
+    $this->dispatch((new SMS( '+71234567890', 'Hello world!')))->delay(5));
+}
 ```
 
 
