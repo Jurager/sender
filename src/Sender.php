@@ -11,10 +11,10 @@ class Sender
      * Settings
      *
      */
-    public $agent;   
-    public $username;
-    public $password;
-    public $name;  
+    private $agent;   
+    private $username;
+    private $password;
+    private $name;  
 
 
     private $errors = [
@@ -45,9 +45,7 @@ class Sender
 
 
     /**
-     * Create a new confide instance.
-     *
-     * @param \Illuminate\Foundation\Application $app
+     * Create a new instance.
      *
      * @return void
      */
@@ -59,7 +57,11 @@ class Sender
         $this->name     = Config::get('sender.name');
     }
 
-
+    /**
+     * @param $url
+     * @param $data
+     * @return array
+     */
     private function send ($url, $data = false) {
 
         $ch = curl_init( $url );
