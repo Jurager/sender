@@ -23,11 +23,8 @@ class SenderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Publish config files
-        $this->publishes([
-            __DIR__.'/../config/config.php' => config_path('sender.php'),
-        ]);
-       
+        $this->publishConfig();
+        $this->publishLanguages();   
     }
 
     /**
@@ -40,6 +37,7 @@ class SenderServiceProvider extends ServiceProvider
 
         $this->registerSender();
         $this->mergeConfig();
+        $this->mergeLanguages();
     }
 
     /**
@@ -65,9 +63,40 @@ class SenderServiceProvider extends ServiceProvider
      */
     private function mergeConfig()
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/config.php', 'sender'
-        );
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'sender');
+    }
+
+    /**
+     * Publishes sender configs.
+     *
+     * @return void
+     */
+    private function publishConfig()
+    {
+        $this->publishes([
+            __DIR__.'/../config/config.php' => config_path('sender.php'),
+        ]);
+    }
+
+    /**
+     * Merges user's and sender's languages assets.
+     *
+     * @return array
+     */
+    public function mergeLanguages()
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'sender');
     }
     
+    /**
+     * Publishes sender configs.
+     *
+     * @return void
+     */
+    private function publishLanguages()
+    {
+        $this->publishes([
+            __DIR__.'/../resources/lang/' => resource_path('lang/vendor/sender'),
+        ]);
+    }
 }
