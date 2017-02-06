@@ -1,6 +1,6 @@
 # Changelog
 
-All Notable changes to `phpmorphy` will be documented in this file
+All Notable changes will be documented in this file
 
 ## NEXT - YYYY-MM-DD
 
