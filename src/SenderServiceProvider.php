@@ -24,7 +24,9 @@ class SenderServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishConfig();
-        $this->publishLanguages();   
+        $this->publishLanguages();
+        $this->mergeConfig();
+        $this->mergeLanguages();
     }
 
     /**
@@ -36,8 +38,7 @@ class SenderServiceProvider extends ServiceProvider
     {
 
         $this->registerSender();
-        $this->mergeConfig();
-        $this->mergeLanguages();
+        
     }
 
     /**

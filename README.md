@@ -23,6 +23,12 @@ Section ```aliases```
 ``` php
 'Sender'    => Jurager\Sender\Sender::class,
 ```
+
+Publish package files by running 
+```
+php artisan vendor:publish --provider="Jurager\Sender\SenderServiceProvider"
+```
+
 Now, if you have configured ```Queues```, you can create a ```Job``` like this below in ```/App/Http/Jobs```
 ```
 <?php
