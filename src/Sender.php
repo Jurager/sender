@@ -18,8 +18,8 @@ class Sender
     private $name;  
 
 
-    private $errors   = Lang::get('sender::errors');
-    private $statuses = Lang::get('sender::statuses');
+    private $errors;
+    private $statuses;
 
 
     /**
@@ -33,6 +33,9 @@ class Sender
         $this->username = Config::get('sender.username');
         $this->password = Config::get('sender.password');
         $this->name     = Config::get('sender.name');
+        
+        $this->errors   = Lang::get('sender::errors');
+        $this->statuses = Lang::get('sender::statuses');
     }
 
     /**
