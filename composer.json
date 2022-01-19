@@ -1,8 +1,8 @@
 {
     "name": "jurager/sender",
-    "description": "Sender - Laravel Provider for SMS-assistent.by",
+    "description": "Laravel provider for sending sms messages by SMS-assistent.by",
     "keywords": [
-        "Morphy"
+        "SMS", "Queued", "Laravel", "SMS-assistent.by"
     ],
     "homepage": "https://github.com/jurager/sender",
     "license": "MIT",
@@ -17,6 +17,13 @@
     "autoload": {
         "psr-4": {
             "Jurager\\Sender\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jurager\\Sender\\SenderServiceProvider"
+            ]
         }
     }
 }
