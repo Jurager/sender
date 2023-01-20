@@ -1,33 +1,29 @@
-# jurager/sender
+# Jurager/Sender
+[![Latest Stable Version](https://poser.pugx.org/jurager/sender/v/stable)](https://packagist.org/packages/jurager/sender)
+[![Total Downloads](https://poser.pugx.org/jurager/sender/downloads)](https://packagist.org/packages/jurager/sender)
+[![PHP Version Require](http://poser.pugx.org/jurager/sender/require/php)](https://packagist.org/packages/jurager/sender)
+[![License](https://poser.pugx.org/jurager/sender/license)](https://packagist.org/packages/jurager/sender)
 
 Sender - Laravel Provider for SMS-assistent.by
 
 
-## Install
+## Installation
 
-Via Composer
 ``` bash
 $ composer require jurager/sender
 ```
 
-## Laravel support
+Add to config/app.php in section ```aliases```:
 
-Add to config/app.php:
-
-Section ```providers```
 ``` php
-Jurager\Sender\SenderServiceProvider::class,
-```
-
-Section ```aliases```
-``` php
-'Sender'    => Jurager\Sender\Sender::class,
+'Sender' => Jurager\Sender\Sender::class,
 ```
 
 Publish package files by running 
 ```
 php artisan vendor:publish --provider="Jurager\Sender\SenderServiceProvider"
 ```
+## Usage
 
 Now, if you have configured ```Queues```, you can create a ```Job``` like this below in ```/App/Http/Jobs```
 ```
@@ -76,12 +72,6 @@ class SampleController
 }
 ```
 
-
-## Change log
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Contributing
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
 ## License
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+This package is open-sourced software licensed under the [MIT license](LICENSE.md).
